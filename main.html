@@ -1,0 +1,155 @@
+<p>ルーミアだよとは、普通のひとです</p>
+
+<p><img src="https://media.discordapp.net/attachments/1076441537690488855/1124618363591729183/2023-06-28_152707.png?width=741&amp;height=491" alt="マイクラのスキン" title="自作スキン" /></p>
+
+<p>↓サイト系↓</p>
+<p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　まだ↓あるのでみてほしいです</p>
+<p>discord:rumiadayo<p>
+  <br /><a href="https://www.youtube.com/@jkjc/channels">ルーミアのようつべチャンネル！</a>
+<br /><a href="https://twitter.com/type_miku">ルーミアのツイッターチャンネル！</a>
+<br /><a href="https://www.tiktok.com/@rumiadayo/">ルーミアのtiktokチャンネル！</a>
+<br /><head>
+
+
+<html>
+<head>
+  <title>rumiadayoクイズゲーム</title>
+  <style>
+    .feedback {
+      display: none;
+    }
+  </style>
+  <script>
+    var questions = [
+      {
+        question: "rumiadayoの性別は？",
+        options: [
+          "女",
+          "男",
+          "ふたなり",
+          "ない"
+        ],
+        answer: 1
+      },
+      {
+        question: "rumiadayoの好きな人の名前は？",
+        options: [
+          "りおん",
+          "ここみ",
+          "みき",
+          "ゆい"
+        ],
+        answer: 3
+      },
+      {
+        question: "rumiadayoが付き合った人数は？",
+        options: [
+          "一人",
+          "二人",
+          "三人",
+          "0人"
+        ],
+        answer: 0
+      },
+      {
+        question: "rumiadayo年齢？",
+        options: [
+          "13",
+          "14",
+          "15",
+          "16"
+        ],
+        answer: 1
+      }
+    ];
+
+    var currentQuestionIndex = 0;
+    var correctAnswers = 0; // 正解数を格納する変数
+    var incorrectAnswers = 0; // 間違い数を格納する変数
+
+    function initializeQuiz() {
+      showQuestion();
+    }
+
+    function showQuestion() {
+      var currentQuestion = questions[currentQuestionIndex];
+
+      var questionElement = document.getElementById("question");
+      questionElement.textContent = currentQuestion.question;
+
+      var optionsElement = document.getElementById("options");
+      optionsElement.innerHTML = "";
+
+      for (var i = 0; i < currentQuestion.options.length; i++) {
+        var option = currentQuestion.options[i];
+
+        var li = document.createElement("li");
+        var label = document.createElement("label");
+        var input = document.createElement("input");
+        input.type = "radio";
+        input.name = "option";
+        input.value = i;
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(option));
+        li.appendChild(label);
+        optionsElement.appendChild(li);
+      }
+
+      var feedbackElement = document.getElementById("feedback");
+      feedbackElement.style.display = "none";
+    }
+
+    function checkAnswer() {
+      var currentQuestion = questions[currentQuestionIndex];
+      var selectedOption = document.querySelector('input[name="option"]:checked');
+
+      if (!selectedOption) {
+        alert("回答を選択してください");
+        return;
+      }
+
+      var selectedAnswer = parseInt(selectedOption.value);
+
+      var feedbackElement = document.getElementById("feedback");
+
+      if (selectedAnswer === currentQuestion.answer) {
+        feedbackElement.textContent = "正解です！";
+        feedbackElement.style.color = "green";
+        correctAnswers++; // 正解数をインクリメント
+      } else {
+        feedbackElement.textContent = "不正解です！ 正解は「" + currentQuestion.options[currentQuestion.answer] + "」です。";
+        feedbackElement.style.color = "red";
+        incorrectAnswers++; // 間違い数をインクリメント
+      }
+
+      feedbackElement.style.display = "block";
+
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex < questions.length) {
+        setTimeout(showQuestion, 1500);
+      } else {
+        setTimeout(finishQuiz, 1500);
+      }
+    }
+
+    function finishQuiz() {
+      var quizContainer = document.getElementById("quiz-container");
+      var resultMessage = "<h2>クイズ終了！</h2>";
+      resultMessage += "<p>お疲れ様でした。</p>";
+      resultMessage += "<p>正解数: " + correctAnswers + "</p>";
+      resultMessage += "<p>間違い数: " + incorrectAnswers + "</p>";
+      quizContainer.innerHTML = resultMessage;
+    }
+
+    window.onload = initializeQuiz;
+  </script>
+</head>
+<body>
+  <div id="quiz-container">
+    <h1>クイズゲーム</h1>
+      <h3 id="question"></h3>
+      <ul id="options"></ul>
+    </div>
+    <button onclick="checkAnswer()">回答する</button>
+    <div id="feedback" class="feedback"></div>
