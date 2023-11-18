@@ -1,164 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-<meta name="description" content="rumaidayoのhomepageだよ！">
-<link rel="icon"href="https://media.discordapp.net/attachments/1132568432576036935/1141989615855734814/2023-08-03_153142.png?width=543&height=520">
-
-<p>ルーミアだよとは、普通のひとです</p>
-
-<p><img src="https://media.discordapp.net/attachments/1076441537690488855/1124618363591729183/2023-06-28_152707.png?width=741&amp;height=491" alt="マイクラのスキン" title="自作スキン" /></p>
-
-<p>↓サイト系↓</p>
-<p>     まだ↓あるのでみてほしいです</p>
-<p>discord:rumiadayo<p>
-<br /><a href="https://www.youtube.com/@jkjc/channels">ルーミアのようつべチャンネル！</a>
-<br /><a href="https://twitter.com/type_miku">ルーミアのツイッターチャンネル！</a>
-<br /><a href="https://www.tiktok.com/@rumiadayo/">ルーミアのtiktokチャンネル！</a>
-  <br /><a href="https://apple.151650.repl.co/">学校で使えるサイトらしい</a>
-<br /><head>
-<html>
-<head>
-  <title>rumiadayoクイズゲーム</title>
-  <style>
-    .feedback {
-      display: none;
-    }
-  </style>
-  <script>
-    var questions = [
-      {
-        question: "rumiadayoの性別は？",
-        options: [
-          "女",
-          "男",
-          "ふたなり",
-          "ない"
-        ],
-        answer: 1
-      },
-      {
-        question: "rumiadayoの好きな人の名前は？",
-        options: [
-          "りおん",
-          "ここみ",
-          "みき",
-          "ゆい"
-        ],
-        answer: 3
-      },
-      {
-        question: "rumiadayoが付き合った人数は？",
-        options: [
-          "一人",
-          "二人",
-          "三人",
-          "0人"
-        ],
-        answer: 0
-      },
-      {
-        question: "rumiadayo年齢？",
-        options: [
-          "13",
-          "14",
-          "15",
-          "16"
-        ],
-        answer: 1
-      }
-    ];
-
-    var currentQuestionIndex = 0;
-    var correctAnswers = 0; // 正解数を格納する変数
-    var incorrectAnswers = 0; // 間違い数を格納する変数
-
-    function initializeQuiz() {
-      showQuestion();
-    }
-
-    function showQuestion() {
-      var currentQuestion = questions[currentQuestionIndex];
-
-      var questionElement = document.getElementById("question");
-      questionElement.textContent = currentQuestion.question;
-
-      var optionsElement = document.getElementById("options");
-      optionsElement.innerHTML = "";
-
-      for (var i = 0; i < currentQuestion.options.length; i++) {
-        var option = currentQuestion.options[i];
-
-        var li = document.createElement("li");
-        var label = document.createElement("label");
-        var input = document.createElement("input");
-        input.type = "radio";
-        input.name = "option";
-        input.value = i;
-        label.appendChild(input);
-        label.appendChild(document.createTextNode(option));
-        li.appendChild(label);
-        optionsElement.appendChild(li);
-      }
-
-      var feedbackElement = document.getElementById("feedback");
-      feedbackElement.style.display = "none";
-    }
-
-    function checkAnswer() {
-      var currentQuestion = questions[currentQuestionIndex];
-      var selectedOption = document.querySelector('input[name="option"]:checked');
-
-      if (!selectedOption) {
-        alert("回答を選択してください");
-        return;
-      }
-
-      var selectedAnswer = parseInt(selectedOption.value);
-
-      var feedbackElement = document.getElementById("feedback");
-
-      if (selectedAnswer === currentQuestion.answer) {
-        feedbackElement.textContent = "正解です！";
-        feedbackElement.style.color = "green";
-        correctAnswers++; // 正解数をインクリメント
-      } else {
-        feedbackElement.textContent = "不正解です！ 正解は「" + currentQuestion.options[currentQuestion.answer] + "」です。";
-        feedbackElement.style.color = "red";
-        incorrectAnswers++; // 間違い数をインクリメント
-      }
-
-      feedbackElement.style.display = "block";
-
-      currentQuestionIndex++;
-
-      if (currentQuestionIndex < questions.length) {
-        setTimeout(showQuestion, 1500);
-      } else {
-        setTimeout(finishQuiz, 1500);
-      }
-    }
-
-    function finishQuiz() {
-      var quizContainer = document.getElementById("quiz-container");
-      var resultMessage = "<h2>クイズ終了！</h2>";
-      resultMessage += "<p>お疲れ様でした。</p>";
-      resultMessage += "<p>正解数: " + correctAnswers + "</p>";
-      resultMessage += "<p>間違い数: " + incorrectAnswers + "</p>";
-      quizContainer.innerHTML = resultMessage;
-    }
-
-    window.onload = initializeQuiz;
-  </script>
+    <meta name="description" content="rumaidayoのhomepageだよ!">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rumiadayoクイズゲーム</title>
+    <link rel="icon"href="https://media.discordapp.net/attachments/1132568432576036935/1141989615855734814/2023-08-03_153142.png?width=543&height=520">
+    <style>
+        * {
+            margin: 0;
+        }
+        .header {
+            background-color: white;
+        }
+        .title {
+            padding: 15px;
+            padding-left: 100px;
+        }
+        .header2 {
+            width: 100%;
+            height: 30px;
+            background-color: rgb(35, 35, 35);
+        }
+        img {
+            width: 100%;
+        }
+        .block {
+            height: 100px;
+            padding: 30px;
+        }
+        .icon {
+            margin-left: 30%;
+            float: left;
+            width: 100px;
+        }
+        .discord {
+            width: 100px;
+            float: left;
+        }
+        .youtube {
+            height: 100px;
+            float: left;
+        }
+        .twitter {
+            width: 100px;
+            float: left;
+        }
+        
+        .tiktok {
+            width: 100px;
+            float: left;
+        }
+        .site {
+            width: 100px;
+            float: left;
+        }
+        .content {
+            padding: 40px;
+            font-size: 50px;
+        }
+        #p {
+            margin-left: 10px;
+            padding: 28px;
+        }
+    </style>
 </head>
 <body>
-  <div id="quiz-container">
-    <h1>クイズゲーム</h1>
-      <h3 id="question"></h3>
-      <ul id="options"></ul>
+    <div class="header">
+        <h1 class="title">Rumidayo</h1>
     </div>
-    <button onclick="checkAnswer()">回答する</button>
-    <div id="feedback" class="feedback"></div>
-  
+    <div class="header2"></div>
+    <img src="https://media.discordapp.net/attachments/1076441537690488855/1124618363591729183/2023-06-28_152707.png?width=741&amp;height=491" alt="マイクラのスキン" title="自作スキン" />
+    <div class="info">
+        <div class="block">
+            <img class="icon discord" src="data:image/png;base64,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" alt="">
+            <p id="p" class="content">ID: rumiadayo</p>
+        </div>
+        <div class="header2"></div>
+        <div class="block">
+            <svg class="icon youtube" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" style="opacity: 1;" xml:space="preserve"><style type="text/css">.st0{fill:#4B4B4B;}</style><g><path class="st0" d="M482.703,98.813C456.469,77.625,363.953,61,256,61S55.531,77.625,29.297,98.813C5.188,118.25,0,206.125,0,256   s5.188,137.75,29.297,157.188C55.531,434.375,148.047,451,256,451s200.469-16.625,226.703-37.813   C506.813,393.75,512,305.875,512,256S506.813,118.25,482.703,98.813z M332.813,258.406l-118.844,70.938   c-0.875,0.5-1.938,0.531-2.813,0.031s-1.422-1.438-1.422-2.438V256v-70.938c0-1.016,0.547-1.938,1.422-2.438   s1.938-0.469,2.813,0.031l118.844,70.938c0.844,0.5,1.359,1.406,1.359,2.406C334.172,256.969,333.656,257.906,332.813,258.406z" style="fill: rgb(75, 75, 75);"/></g></svg>
+            <a class="content" href="https://www.youtube.com/@jkjc/channels">YouTube</a>
+        </div>
+        <div class="header2"></div>
+        <div class="block">
+            <svg class="icon twitter" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" x="0px" y="0px" viewBox="0 0 512 512" style="opacity: 1;" xml:space="preserve"><style type="text/css">.st0{fill:#4B4B4B;}</style><g><path class="st0" d="M256,0C114.615,0,0,114.615,0,256s114.615,256,256,256s256-114.615,256-256S397.385,0,256,0z M260.926,217.391   c0.084,0.004,0.164,0.021,0.25,0.025c-0.875-3.752-1.328-7.664-1.328-11.682c0-28.307,22.951-51.258,51.262-51.258   c14.742,0,28.063,6.225,37.414,16.188c9.6-1.89,18.684-5.174,27.129-9.523c1.781-0.864,3.566-1.723,5.32-2.674   c-3.039,9.334-8.744,17.412-16.141,23.532c-2.004,1.576-4.062,3.098-6.326,4.344c0.154-0.018,0.304-0.052,0.457-0.071   c-0.15,0.093-0.275,0.22-0.428,0.312c8.402-1.005,16.459-3.051,24.111-5.942c1.715-0.592,3.428-1.191,5.127-1.852   c-6.842,10.159-15.453,19.095-25.375,26.259c0.098,2.197,0.148,4.406,0.148,6.631c0,67.736-51.558,145.842-145.844,145.842   c-28.947,0-55.891-8.484-78.576-23.028c4.01,0.473,8.092,0.715,12.229,0.715c19.136,0,37.014-5.269,52.383-14.34   c3.871-2.23,7.658-4.639,11.273-7.365c-0.098-0.002-0.187-0.026-0.285-0.028c0.094-0.073,0.196-0.136,0.289-0.209   c-19.422-0.358-36.184-11.539-44.574-27.747c-1.25-2.489-2.32-5.096-3.164-7.831c3.086,0.58,6.246,0.898,9.5,0.898   c3.391,0,6.666-0.436,9.871-1.063c1.197-0.168,2.406-0.308,3.586-0.502c-0.156-0.032-0.293-0.1-0.449-0.133   c0.162-0.042,0.336-0.056,0.496-0.1c-23.449-4.709-41.119-25.428-41.119-50.262c0-0.196,0.002-0.387,0.004-0.58l0.024-0.055   c5.521,3.064,11.693,5.092,18.23,5.94c1.609,0.269,3.221,0.516,4.832,0.657c-0.11-0.074-0.205-0.164-0.314-0.238   c0.152,0.006,0.297,0.036,0.447,0.041c-13.754-9.191-22.803-24.883-22.803-42.666c0-8.142,1.988-15.787,5.367-22.623   c0.539-1.028,1.018-2.078,1.637-3.074c22.711,27.822,55.516,46.971,92.801,52.15c4.16,0.605,8.332,1.144,12.553,1.388   C260.934,217.443,260.932,217.416,260.926,217.391z" style="fill: rgb(75, 75, 75);"/></g></svg>
+            <a class="content" href="https://twitter.com/type_miku">Twitter</a>
+        </div>
+        <div class="header2"></div>
+        <div class="block">
+            <img class="icon tiktok" src="data:image/png;base64,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" alt="">
+            <a class="content" href="https://www.tiktok.com/@rumiadayo/">TikTok</a>
+        </div>
+        <div class="header2"></div>
+        <div class="block">
+            <svg class="icon site" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="_x32_" x="0px" y="0px" viewBox="0 0 512 512" style="opacity: 1;" xml:space="preserve"><style type="text/css">.st0{fill:#4B4B4B;}</style><g><path class="st0" d="M378.413,0H208.297h-13.182L185.8,9.314L57.02,138.102l-9.314,9.314v13.176v265.514   c0,47.36,38.528,85.895,85.896,85.895h244.811c47.353,0,85.881-38.535,85.881-85.895V85.896C464.294,38.528,425.766,0,378.413,0z    M432.497,426.105c0,29.877-24.214,54.091-54.084,54.091H133.602c-29.884,0-54.098-24.214-54.098-54.091V160.591h83.716   c24.885,0,45.077-20.178,45.077-45.07V31.804h170.116c29.87,0,54.084,24.214,54.084,54.092V426.105z" style="fill: rgb(75, 75, 75);"/><path class="st0" d="M163.164,253.19c-5.097,0-8.867,3.652-8.867,9.482v23.453c0,0.489-0.251,0.734-0.726,0.734h-26.993   c-0.475,0-0.726-0.245-0.726-0.734v-23.453c0-5.831-3.771-9.482-8.868-9.482c-5.222,0-8.993,3.652-8.993,9.482v65.144   c0,5.83,3.645,9.475,8.868,9.475c5.111,0,8.993-3.645,8.993-9.475v-24.305c0-0.489,0.251-0.734,0.726-0.734h26.993   c0.475,0,0.726,0.244,0.726,0.734v24.305c0,5.83,3.77,9.475,8.867,9.475c5.223,0,8.993-3.645,8.993-9.475v-65.144   C172.157,256.841,168.387,253.19,163.164,253.19z" style="fill: rgb(75, 75, 75);"/><path class="st0" d="M235.249,253.923h-47.284c-5.46,0-8.993,3.282-8.993,8.023c0,4.615,3.533,7.897,8.993,7.897h13.978   c0.488,0,0.726,0.244,0.726,0.726v57.247c0,5.711,3.771,9.475,8.882,9.475c5.223,0,8.993-3.764,8.993-9.475v-57.247   c0-0.482,0.237-0.726,0.726-0.726h13.978c5.46,0,8.993-3.282,8.993-7.897C244.242,257.204,240.709,253.923,235.249,253.923z" style="fill: rgb(75, 75, 75);"/><path class="st0" d="M318.253,253.19c-5.348,0-8.267,2.919-10.934,9.238l-17.26,39.862h-0.489l-17.623-39.862   c-2.794-6.319-5.712-9.238-11.06-9.238c-5.948,0-9.845,4.134-9.845,10.697v64.781c0,5.467,3.408,8.623,8.268,8.623   c4.622,0,8.029-3.156,8.029-8.623v-39.868h0.6l12.89,29.653c2.541,5.837,4.608,7.541,8.742,7.541c4.133,0,6.2-1.704,8.756-7.541   l12.764-29.653h0.601v39.868c0,5.467,3.281,8.623,8.141,8.623c4.874,0,8.156-3.156,8.156-8.623v-64.781   C327.987,257.323,324.216,253.19,318.253,253.19z" style="fill: rgb(75, 75, 75);"/><path class="st0" d="M389.36,320.645h-29.408c-0.489,0-0.726-0.244-0.726-0.734v-57.24c0-5.712-3.77-9.482-8.867-9.482   c-5.237,0-8.993,3.77-8.993,9.482v64.899c0,5.349,3.518,8.993,8.993,8.993h39.002c5.475,0,8.994-3.282,8.994-8.022   C398.354,323.926,394.835,320.645,389.36,320.645z" style="fill: rgb(75, 75, 75);"/></g></svg>
+            <a class="content" href="https://apple.151650.repl.co/">HTML</a>
+        </div>
+    </div>
+    <script></script>
 </body>
 </html>
